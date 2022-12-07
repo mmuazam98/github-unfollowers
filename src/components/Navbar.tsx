@@ -15,7 +15,7 @@ export const Navbar = () => {
         <IconButton aria-label="delete" onClick={() => (theme === "dark" ? setTheme(Theme.light) : setTheme(Theme.dark))}>
           {theme === "dark" ? <NightlightRoundIcon /> : <WbSunnyIcon />}
         </IconButton>
-        <IconButton aria-label="delete" onClick={() => window.open("https://github.com/mmuazam98/github-unfollowers8")}>
+        <IconButton aria-label="delete" onClick={() => window.open("https://github.com/mmuazam98/github-unfollowers")}>
           <GitHubIcon />
         </IconButton>
       </Box>
