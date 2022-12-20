@@ -42,7 +42,7 @@ const Search = forwardRef(({ handleSearch }: { handleSearch: () => void }, ref) 
         handleSearch();
       }}
     >
-      <TextField id="filled-basic" label="Username" variant="filled" className="search-input" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value.trim())} />
+      <TextField id="filled-basic" label="Username" variant="filled" className="search-input" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value.trim())} data-testid="search-input" />
       <IconButton onClick={handleSearch}>
         <SearchIcon />
       </IconButton>
