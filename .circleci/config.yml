@@ -24,8 +24,11 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: echo $VERCEL_ORG_ID
+      - run: yarn test
 
-      - run: echo $VERCEL_PROJECT_ID
+      # build
+      - run: yarn build
 
-      # - run: yarn netlify:deploy
+      # deploy to vercel
+
+      - run: yarn vercel:deploy
