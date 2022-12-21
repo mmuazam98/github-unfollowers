@@ -29,7 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "vercel:deploy": "vercel --prod"
+    "vercel:deploy": "vercel --prod --token=$VERCEL_TOKEN"
   },
   "browserslist": {
     "production": [
