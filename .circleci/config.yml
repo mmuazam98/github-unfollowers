@@ -33,3 +33,9 @@ jobs:
       - run: yarn vercel:build
 
       - run: yarn vercel:deploy
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build_and_deploy
