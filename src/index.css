@@ -1,41 +1,54 @@
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+ width: 5px;
+ height: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
+ border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 100px;
+ background: rgba(0, 0, 0, 0.2);
+ border-radius: 100px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.25);
+ background: rgba(0, 0, 0, 0.25);
 }
 .search-input {
-  width: 30ch;
+ width: 30ch;
 }
-@media (max-width: 515px) {
-  .MuiTabs-scroller {
-    overflow-x: scroll !important;
-  }
+@media (max-width: 933px) {
+ .MuiTabs-scroller {
+  overflow-x: scroll !important;
+ }
 }
-@media (min-width: 790px) {
-  .MuiTabs-flexContainer {
-    justify-content: center;
-  }
-  .tabs {
-    width: 70%;
-    margin: auto;
-  }
-  .search-input {
-    width: 50ch;
-  }
+@media (min-width: 767px) {
+ .MuiTabs-flexContainer {
+  justify-content: center;
+ }
+ .tabs {
+  width: 80%;
+  margin: auto;
+ }
+ .search-input {
+  width: 50ch;
+ }
+}
+
+@media (min-width: 1090px) {
+ .MuiTabs-flexContainer {
+  justify-content: center;
+ }
+ .tabs {
+  width: 70%;
+  margin: auto;
+ }
+ .search-input {
+  width: 50ch;
+ }
 }

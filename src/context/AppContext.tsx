@@ -20,31 +20,22 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
  const [contentLoading, setContentLoading] = React.useState(false);
  const [info, setInfo] = React.useState<any>();
 
- const memoizedTheme = React.useMemo(() => {
-  return theme === Theme.dark ? Theme.light : Theme.dark;
- }, [theme]);
-
  const themeToggler = React.useCallback(() => {
   setTheme((prev) => (prev === Theme.dark ? Theme.light : Theme.dark));
  }, []);
 
- const memoizedMainLoading = React.useMemo(() => {
-  return mainLoading;
- }, [mainLoading]);
+ const memoizedContext = React.useMemo(() => {
+  return {
+   theme,
+   themeToggler,
+   mainLoading,
+   setMainLoading,
+   contentLoading,
+   setContentLoading,
+   info,
+   setInfo,
+  };
+ }, [theme, themeToggler, mainLoading, setMainLoading, contentLoading, setContentLoading, info, setInfo]);
 
- const memoizedContentLoading = React.useMemo(() => {
-  return contentLoading;
- }, [contentLoading]);
-
- const memoizedInfo = React.useMemo(() => {
-  return info;
- }, [info]);
-
- return (
-  <AppContext.Provider
-   value={{ theme: memoizedTheme, themeToggler, mainLoading: memoizedMainLoading, setMainLoading, contentLoading: memoizedContentLoading, setContentLoading, info: memoizedInfo, setInfo }}
-  >
-   {children}
-  </AppContext.Provider>
- );
+ return <AppContext.Provider value={{ ...memoizedContext }}>{children}</AppContext.Provider>;
 };
