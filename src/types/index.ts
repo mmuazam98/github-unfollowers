@@ -40,7 +40,7 @@ export enum Theme {
 
 export type AppContextType = {
  theme: string;
- setTheme: (Theme: Theme) => void;
+ themeToggler: () => void;
  info: { user: User; followers: User[]; following: User[]; notMutual: User[]; unfollowers: User[] };
  setInfo: (prev: any) => void;
  mainLoading: boolean;

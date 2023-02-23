@@ -3,7 +3,7 @@ import { AppContextType, Theme, User } from "../types";
 
 export const AppContext = React.createContext<AppContextType>({
  theme: Theme.dark,
- setTheme: (theme) => console.warn("no theme provider"),
+ themeToggler: () => console.warn("no theme provider"),
  info: { user: {} as User, followers: [] as User[], following: [] as User[], notMutual: [] as User[], unfollowers: [] as User[] },
  setInfo: (info) => console.warn("no info provider"),
  mainLoading: false,
@@ -20,5 +20,31 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
  const [contentLoading, setContentLoading] = React.useState(false);
  const [info, setInfo] = React.useState<any>();
 
- return <AppContext.Provider value={{ theme, setTheme, mainLoading, setMainLoading, setContentLoading, contentLoading, info, setInfo }}>{children}</AppContext.Provider>;
+ const memoizedTheme = React.useMemo(() => {
+  return theme === Theme.dark ? Theme.light : Theme.dark;
+ }, [theme]);
+
+ const themeToggler = React.useCallback(() => {
+  setTheme((prev) => (prev === Theme.dark ? Theme.light : Theme.dark));
+ }, []);
+
+ const memoizedMainLoading = React.useMemo(() => {
+  return mainLoading;
+ }, [mainLoading]);
+
+ const memoizedContentLoading = React.useMemo(() => {
+  return contentLoading;
+ }, [contentLoading]);
+
+ const memoizedInfo = React.useMemo(() => {
+  return info;
+ }, [info]);
+
+ return (
+  <AppContext.Provider
+   value={{ theme: memoizedTheme, themeToggler, mainLoading: memoizedMainLoading, setMainLoading, contentLoading: memoizedContentLoading, setContentLoading, info: memoizedInfo, setInfo }}
+  >
+   {children}
+  </AppContext.Provider>
+ );
 };

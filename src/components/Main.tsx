@@ -159,7 +159,7 @@ export const Main = () => {
          <Tooltip title="Followers are the people who follow you on Github">
           <HelpOutlineIcon fontSize="small" />
          </Tooltip>
-         {`Followers ${info?.user?.followers ? `(${info?.user?.followers})` : "(0)"}`}
+         Followers ({info?.user?.followers ? info?.user?.followers : "0"})
         </Typography>
        }
        {...a11yProps(0)}
@@ -176,7 +176,7 @@ export const Main = () => {
          <Tooltip title="Following are the people you follow on Github">
           <HelpOutlineIcon fontSize="small" />
          </Tooltip>
-         {`Following ${info?.user?.following ? `(${info?.user?.following})` : "(0)"}`}
+         Following ({info?.user?.following ? info?.user?.following : "0"})
         </Typography>
        }
        {...a11yProps(1)}
@@ -193,7 +193,7 @@ export const Main = () => {
          <Tooltip title="Unfollowers are the people who you follow but they don't follow you back">
           <HelpOutlineIcon fontSize="small" />
          </Tooltip>
-         {`Unfollowers ${info?.unfollowers?.length ? `(${info?.unfollowers?.length})` : "(0)"}`}
+         Unfollowers ({info?.unfollowers?.length ? info?.unfollowers?.length : "0"})
         </Typography>
        }
        {...a11yProps(2)}
@@ -210,7 +210,7 @@ export const Main = () => {
          <Tooltip title="Not Mutual are the people who follow you but you don't follow them back">
           <HelpOutlineIcon fontSize="small" />
          </Tooltip>
-         {`Not Mutual ${info?.notMutual?.length ? `(${info?.notMutual?.length})` : "(0)"}`}
+         Not Mutual ({info?.notMutual?.length ? info?.notMutual?.length : "0"})
         </Typography>
        }
        {...a11yProps(3)}
@@ -218,16 +218,16 @@ export const Main = () => {
      </Tabs>
     </Box>
     <TabPanel value={value} index={0}>
-     {!info?.followers?.length ? <LoadingContent /> : info?.followers.map((user: any, idx: number) => <User user={user} key={user.node_id + idx} />)}
+     {!info?.followers?.length ? <LoadingContent /> : info?.followers.map((user: UserType, idx: number) => <User user={user} key={user.node_id} />)}
     </TabPanel>
     <TabPanel value={value} index={1}>
-     {!info?.following?.length ? <LoadingContent /> : info?.following.map((user: any) => <User user={user} key={user.node_id} />)}
+     {!info?.following?.length ? <LoadingContent /> : info?.following.map((user: UserType) => <User user={user} key={user.node_id} />)}
     </TabPanel>
     <TabPanel value={value} index={2}>
-     {!info?.unfollowers?.length ? <LoadingContent /> : info?.unfollowers?.map((user: any) => <User user={user} key={user.node_id} />)}
+     {!info?.unfollowers?.length ? <LoadingContent /> : info?.unfollowers?.map((user: UserType) => <User user={user} key={user.node_id} />)}
     </TabPanel>
     <TabPanel value={value} index={3}>
-     {!info?.notMutual?.length ? <LoadingContent /> : info?.notMutual?.map((user: any) => <User user={user} key={user.node_id} />)}
+     {!info?.notMutual?.length ? <LoadingContent /> : info?.notMutual?.map((user: UserType) => <User user={user} key={user.node_id} />)}
     </TabPanel>
    </Box>
   </>

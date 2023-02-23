@@ -8,15 +8,15 @@ import { useAppContext } from "../context/AppContext";
 import { Theme } from "../types";
 
 export const Navbar = () => {
- const { theme, setTheme, contentLoading } = useAppContext();
+ const { theme, themeToggler, contentLoading } = useAppContext();
  return (
   <>
    {contentLoading && <LinearProgress sx={{ position: "fixed", width: "100%" }} />}
    <Box sx={{ textAlign: "right", padding: 1, cursor: "pointer" }}>
-    <IconButton aria-label="delete" onClick={() => (theme === "dark" ? setTheme(Theme.light) : setTheme(Theme.dark))}>
+    <IconButton aria-label="delete" onClick={themeToggler}>
      {theme === "dark" ? <NightlightRoundIcon /> : <WbSunnyIcon />}
     </IconButton>
-    <IconButton aria-label="delete" onClick={() => window.open("https://github.com/mmuazam98/github-unfollowers")}>
+    <IconButton aria-label="delete" onClick={() => window.open("https://github.com/mmuazam98/github-unfollowers", "_blank")}>
      <GitHubIcon />
     </IconButton>
    </Box>
