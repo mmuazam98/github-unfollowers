@@ -72,7 +72,7 @@ export const Main = () => {
    response: any,
    data: any[] = [];
   do {
-   response = await axios.get(`https://api.github.com/users/${username}/${query}?per_page=20&page=${i}`);
+   response = await axios.get(`https://api.github.com/users/${username}/${query}?per_page=100&page=${i}`);
    data = [...data, ...response.data];
    i++;
   } while (response.data.length > 0);
